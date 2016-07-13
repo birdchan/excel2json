@@ -17,7 +17,6 @@ def convert_col_i_2_col_ch(col_i):
 def convertXls2Json(filename):
 
     try:
-        #wb = xlrd.open_workbook(file_contents=my_file_content, use_mmap=0)
         wb = xlrd.open_workbook(filename)
     except Exception as e:
         # terminate and pass to stderr? do this later...
@@ -44,7 +43,7 @@ def convertXls2Json(filename):
         sheets[sheetname] = my_sheet_rows
 
     # output
-    return json.dumps(sheets)
+    return json.dumps(sheets, indent=4)
 
 
 if __name__ == '__main__':
@@ -59,3 +58,4 @@ if __name__ == '__main__':
     # main logic
     json_str = convertXls2Json(inputfile)
     print json_str
+
